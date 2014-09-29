@@ -1,9 +1,9 @@
 package se.patrikbergman.java.builder;
 
 public class Band {
-    final String name;
-    final String description;
-    final Genre genre;
+    private final String name;
+    private final String description;
+    private final Genre genre;
 
     private Band(Builder builder) {
         name = builder.name;
