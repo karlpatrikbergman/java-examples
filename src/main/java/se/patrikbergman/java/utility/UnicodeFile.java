@@ -1,5 +1,6 @@
 package se.patrikbergman.java.utility;
 
+import java.io.FileNotFoundException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -15,7 +16,7 @@ public class UnicodeFile {
 	private final Path path;
 	private final Charset charset;
 
-	public UnicodeFile(String resource, String charsetName) throws URISyntaxException {
+	public UnicodeFile(String resource, String charsetName) throws URISyntaxException, FileNotFoundException {
 		this.uri = getUrl(resource).toURI();
 		this.path = Paths.get(uri);
 		this.charset = Charset.forName(charsetName);
@@ -33,8 +34,11 @@ public class UnicodeFile {
 		return uri;
 	}
 
-	private URL getUrl(String resource) {
-		return UnicodeFile.class.getClassLoader().getResource(resource);
+	private URL getUrl(String resource) throws FileNotFoundException {
+		final URL url = UnicodeFile.class.getClassLoader().getResource(resource);
+		if(url == null)
+			throw new FileNotFoundException(String.format("Could not find resource %s", resource));
+		return url;
 	}
 
 	@Override
