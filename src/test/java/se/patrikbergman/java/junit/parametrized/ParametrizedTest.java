@@ -1,10 +1,11 @@
-package se.patrikbergman.java.junit;
+package se.patrikbergman.java.junit.parametrized;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import se.patrikbergman.java.junit.*;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,19 +16,19 @@ import java.util.Collection;
  */
 
 @RunWith(Parameterized.class)
-public class MathTest {
+public class ParametrizedTest {
 
 	private final Integer input;
 	private final Integer expectedOutput;
 
-	public MathTest(final Integer input, final Integer expectedOutput) {
+	public ParametrizedTest(final Integer input, final Integer expectedOutput) {
 		this.input = input;
 		this.expectedOutput = expectedOutput;
 	}
 
 	@Test
 	public void factorial() {
-		final Integer actualResult = Math.factorial(input);
+		final Integer actualResult = se.patrikbergman.java.junit.Math.factorial(input);
 		assertEquals(expectedOutput, actualResult);
 		System.out.println(String.format("Input: %s. Expected result: %s. Actual result: %s", input, expectedOutput,
 				actualResult));
