@@ -3,7 +3,7 @@ package se.patrikbergman.java.junit.rules.configuration;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class TestServerConfigurationTest {
+public class ServerConfigurationTest {
 
 	@Rule
 	public ConfigurationRule configurationRule = new ConfigurationRule();
@@ -11,7 +11,7 @@ public class TestServerConfigurationTest {
 	@ServerConfiguration(host = "localhost", port = "7001", user = "patrik", password = "multikulti123")
 	@Test
 	public void localhostTest() {
-		System.out.println(TestServerConfigurationTest.class.getSimpleName() + " localhost");
+		System.out.println(ServerConfigurationTest.class.getSimpleName() + " localhost");
 		ConfigurationRule.TestServer testServer = configurationRule.getTestServer();
 		testServer.connect();
 	}
@@ -19,7 +19,7 @@ public class TestServerConfigurationTest {
 	@ServerConfiguration(host = "199.199.199", port = "8001", user = "John", password = "beatlesforever")
 	@Test
 	public void remoteServerTest() {
-		System.out.println(TestServerConfigurationTest.class.getSimpleName() + " remote server");
+		System.out.println(ServerConfigurationTest.class.getSimpleName() + " remote server");
 		ConfigurationRule.TestServer testServer = configurationRule.getTestServer();
 		testServer.connect();
 	}
