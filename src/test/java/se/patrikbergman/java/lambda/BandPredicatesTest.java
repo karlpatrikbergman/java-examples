@@ -1,12 +1,7 @@
 package se.patrikbergman.java.lambda;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.ObjectWriter;
-import org.codehaus.jackson.util.DefaultPrettyPrinter;
-import org.junit.Before;
 import org.junit.Test;
-import se.patrikbergman.java.JsonString;
+import se.patrikbergman.java.utility.JsonString;
 
 import static org.junit.Assert.*;
 
