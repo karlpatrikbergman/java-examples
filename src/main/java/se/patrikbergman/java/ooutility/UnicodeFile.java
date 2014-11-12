@@ -1,4 +1,4 @@
-package se.patrikbergman.java.utility;
+package se.patrikbergman.java.ooutility;
 
 import java.io.FileNotFoundException;
 import java.net.URI;
@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * http://www.javacodegeeks.com/2014/09/oop-alternative-to-utility-classes.html
+ * http://www.javacodegeeks.com/2014/09/oop-alternative-to-ooutility-classes.html
  */
 public class UnicodeFile {
 	private final URI uri;

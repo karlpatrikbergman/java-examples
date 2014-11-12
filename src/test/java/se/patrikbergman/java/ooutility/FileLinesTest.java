@@ -1,4 +1,4 @@
-package se.patrikbergman.java.utility;
+package se.patrikbergman.java.ooutility;
 
 import org.junit.Test;
 

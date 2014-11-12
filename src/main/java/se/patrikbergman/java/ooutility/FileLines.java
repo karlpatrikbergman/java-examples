@@ -1,4 +1,4 @@
-package se.patrikbergman.java.utility;
+package se.patrikbergman.java.ooutility;
 
 import com.google.common.collect.ImmutableList;
 
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 /**
- * http://www.javacodegeeks.com/2014/09/oop-alternative-to-utility-classes.html
+ * http://www.javacodegeeks.com/2014/09/oop-alternative-to-ooutility-classes.html
  */
 public class FileLines implements List<String> {
 	private final ImmutableList<String> lines;

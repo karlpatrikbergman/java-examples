@@ -1,4 +1,4 @@
-package se.patrikbergman.java.utility;
+package se.patrikbergman.java.ooutility;
 
 import com.google.common.collect.ImmutableList;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * http://www.javacodegeeks.com/2014/09/oop-alternative-to-utility-classes.html
+ * http://www.javacodegeeks.com/2014/09/oop-alternative-to-ooutility-classes.html
  */
 public class Trimmed {
 	private final ImmutableList<String> trimmedStrings;
