@@ -1,6 +1,8 @@
 package se.patrikbergman.java.utility.resource;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,6 +11,9 @@ import java.util.Properties;
 import static org.junit.Assert.assertNotNull;
 
 public class ResourcesTest {
+
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
 
 	private final String resourceOnClassPath = "environment.properties";
 
@@ -35,5 +40,11 @@ public class ResourcesTest {
 						new ResourceInputStream(resourceOnClassPath)
 				).getString();
 		assertNotNull(string);
+	}
+
+	@Test
+	public void getNonExistingResource() throws IOException {
+		thrown.expect(IOException.class);
+		new ResourceInputStream("non-existing-path");
 	}
 }
