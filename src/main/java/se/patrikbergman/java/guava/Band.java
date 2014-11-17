@@ -11,7 +11,7 @@ public class Band {
 	public Band(String name, String description, int rockFactor) {
 		this.name = Preconditions.checkNotNull(name, "name must not be null");
 		this.description = Preconditions.checkNotNull(description, "description must not be null");
-		Preconditions.checkArgument((rockFactor > 0 && rockFactor < 10), String.format("rockFacctor must be between 0-10 (%s)", rockFactor));
+		Preconditions.checkArgument((rockFactor > 0 && rockFactor < 11), String.format("rockFacctor must be between 0-10 (%s)", rockFactor));
 		this.rockFactor =  rockFactor;
 	}
 

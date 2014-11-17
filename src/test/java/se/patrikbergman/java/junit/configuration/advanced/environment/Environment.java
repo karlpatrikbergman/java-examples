@@ -1,13 +1,13 @@
-package se.patrikbergman.java.junit.rules.configuration2;
+package se.patrikbergman.java.junit.configuration.advanced.environment;
 
-public enum Env {
+public enum Environment {
 	DEV("development"),
 	TEST("test"),
 	QA("QA");
 
 	private final String name;
 
-	Env(String name) {
+	Environment(String name) {
 		this.name = name;
 	}
 
@@ -15,8 +15,8 @@ public enum Env {
 		return name;
 	}
 
-	public static Env fromValue(String value) throws IllegalArgumentException{
-		for(Env env: Env.values()) {
+	public static Environment fromValue(String value) throws IllegalArgumentException{
+		for(Environment env: Environment.values()) {
 			if(env.getName().equals(value)) {
 				return env;
 			}

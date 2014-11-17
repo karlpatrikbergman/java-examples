@@ -14,6 +14,7 @@ public class BlackSabbath {
 	private List<BandMember> members = new ArrayList<>();
 
 	public BlackSabbath() {
+
 		BandMember singer = new BandMember() { //Anonymous class
 			@Override
 			public String getName() {

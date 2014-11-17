@@ -1,4 +1,4 @@
-package se.patrikbergman.java.junit.rules.configuration;
+package se.patrikbergman.java.junit.configuration.simple;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

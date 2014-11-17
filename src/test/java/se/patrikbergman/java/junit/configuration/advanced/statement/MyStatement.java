@@ -1,4 +1,4 @@
-package se.patrikbergman.java.junit.rules.statement;
+package se.patrikbergman.java.junit.configuration.advanced.statement;
 
 import org.junit.runners.model.Statement;
 

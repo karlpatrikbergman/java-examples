@@ -13,7 +13,9 @@ public class BandDecoratorTest {
         RockAct ordinaryBand = new OrdinaryBand(ordinaryBandName);
         final String metalBandName = "Accept";
         RockAct heavyMetalBand = new HeavyMetalBand(new OrdinaryBand(metalBandName));
+
         assertTrue(ordinaryBand.getRockFactor() < heavyMetalBand.getRockFactor());
+        assertTrue(heavyMetalBand instanceof RockAct);
         assertEquals(metalBandName, heavyMetalBand.getName());
         assertEquals(ordinaryBandName, ordinaryBand.getName());
     }

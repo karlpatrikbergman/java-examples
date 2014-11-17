@@ -3,11 +3,11 @@ package se.patrikbergman.java.lambda;
 import org.junit.Test;
 import se.patrikbergman.java.utility.JsonString;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class BandPredicatesTest {
 
@@ -23,6 +23,8 @@ public class BandPredicatesTest {
 				"contender from the late '70s into the 21st century", 10));
 		bands.add(new Band("SlipNot", "Appealing to the Korn/Limp Bizkit axis, masked metalheads Slipknot churn out " +
 				"brutal, agitated, noisy rock", 2));
+		bands.add(new Band("Ultravox", "Depeche Mode claimed to be punks with synthesizers, but it was Ultravox! who " +
+				"first showed the kind of dangerous rhythms that keyboards could create.", 9));
 	}
 
 	@Test

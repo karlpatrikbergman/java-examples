@@ -5,7 +5,7 @@ import se.patrikbergman.java.utility.JsonString;
 
 import java.io.IOException;
 
-import static se.patrikbergman.java.classes.nested.OuterClassForBandMembers.*;
+import static se.patrikbergman.java.classes.nested.OuterClassForBandMembers.StaticBandMember;
 
 public class NestedClassesTest {
 

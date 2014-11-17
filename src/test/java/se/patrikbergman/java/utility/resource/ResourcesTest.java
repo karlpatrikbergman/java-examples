@@ -25,20 +25,14 @@ public class ResourcesTest {
 	}
 
 	@Test
-	public void getPropertiesFromInputStream() throws IOException {
-		final Properties properties =
-				new InputStreamProperties(
-						new ResourceInputStream(resourceOnClassPath)
-				).getProperties();
+	public void resourceProperties() throws IOException {
+		final Properties properties = new ResourceProperties(resourceOnClassPath).getProperties();
 		assertNotNull(properties);
 	}
 
 	@Test
 	public void getStringFromInputStream() throws IOException {
-		final String string =
-				new InputStreamString(
-						new ResourceInputStream(resourceOnClassPath)
-				).getString();
+		final String string = new InputStreamString(new ResourceInputStream(resourceOnClassPath)).getString();
 		assertNotNull(string);
 	}
 

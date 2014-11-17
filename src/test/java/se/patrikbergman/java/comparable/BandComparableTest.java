@@ -1,7 +1,9 @@
 package se.patrikbergman.java.comparable;
 
 import org.junit.Test;
+import se.patrikbergman.java.utility.JsonString;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,8 +23,8 @@ public class BandComparableTest {
 	}
 
 	@Test
-	public void sortComparableBands() {
+	public void sortComparableBands() throws IOException {
 		Collections.sort(bands);
-		System.out.println(bands);
+		System.out.println(new JsonString(bands));
 	}
 }

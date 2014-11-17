@@ -1,4 +1,4 @@
-package se.patrikbergman.java.junit.rules.configuration;
+package se.patrikbergman.java.junit.configuration.simple;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

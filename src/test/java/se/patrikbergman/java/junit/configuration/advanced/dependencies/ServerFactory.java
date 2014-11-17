@@ -1,8 +1,10 @@
-package se.patrikbergman.java.junit.rules.configuration2;
+package se.patrikbergman.java.junit.configuration.advanced.dependencies;
+
+import se.patrikbergman.java.junit.configuration.advanced.environment.Environment;
 
 public final class ServerFactory {
 
-	public static final TestServer createServer(final Env env  ) {
+	public static final TestServer createServer(final Environment env  ) {
 		switch (env) {
 			case DEV:
 				return new TestServer("dev.atg.se", "6001", "dev-user", "hokuspokus");

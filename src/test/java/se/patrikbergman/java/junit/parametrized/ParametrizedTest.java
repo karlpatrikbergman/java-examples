@@ -1,14 +1,14 @@
 package se.patrikbergman.java.junit.parametrized;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import se.patrikbergman.java.junit.*;
 
 import java.util.Arrays;
 import java.util.Collection;
+
+import static org.junit.Assert.assertEquals;
 
 
 /**

@@ -1,4 +1,4 @@
-package se.patrikbergman.java.junit.rules.configuration;
+package se.patrikbergman.java.junit.configuration.simple;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -8,7 +8,7 @@ public class ServerConfigurationTest {
 	@Rule
 	public ConfigurationRule configurationRule = new ConfigurationRule();
 
-	@ServerConfiguration(host = "localhost", port = "7001", user = "patrik", password = "multikulti123")
+	@se.patrikbergman.java.junit.configuration.simple.ServerConfiguration(host = "localhost", port = "7001", user = "patrik", password = "multikulti123")
 	@Test
 	public void localhostTest() {
 		System.out.println(ServerConfigurationTest.class.getSimpleName() + " localhost");
@@ -16,7 +16,7 @@ public class ServerConfigurationTest {
 		testServer.connect();
 	}
 
-	@ServerConfiguration(host = "199.199.199", port = "8001", user = "John", password = "beatlesforever")
+	@se.patrikbergman.java.junit.configuration.simple.ServerConfiguration(host = "199.199.199", port = "8001", user = "John", password = "beatlesforever")
 	@Test
 	public void remoteServerTest() {
 		System.out.println(ServerConfigurationTest.class.getSimpleName() + " remote server");

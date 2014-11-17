@@ -1,4 +1,6 @@
-package se.patrikbergman.java.junit.rules.configuration2;
+package se.patrikbergman.java.junit.configuration.advanced.rule.annotations;
+
+import se.patrikbergman.java.junit.configuration.advanced.environment.Environment;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +9,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-@interface Environment {
-	Env env();
+public @interface MethodEnvironment {
+	Environment env();
 }
 

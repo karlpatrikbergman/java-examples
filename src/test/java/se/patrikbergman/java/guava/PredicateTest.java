@@ -7,7 +7,9 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.junit.Test;
+import se.patrikbergman.java.utility.JsonString;
 
+import java.io.IOException;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
@@ -40,9 +42,9 @@ public class PredicateTest {
 			.build();
 
 	@Test
-	public void filterBands() {
+	public void filterBands() throws IOException {
 		final List<Band> heavyMetalBands = Lists.newArrayList(Collections2.filter(bands, heavyMetalFilter));
-		System.out.println(heavyMetalBands);
+		System.out.println(new JsonString(heavyMetalBands));
 	}
 
 	@Test
