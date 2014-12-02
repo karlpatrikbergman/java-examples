@@ -11,7 +11,7 @@ public class ResourceInputStream {
 
 	private final InputStream inputStream;
 
-	public ResourceInputStream(String pathToResource) throws IOException {
+	public ResourceInputStream(final String pathToResource) throws IOException {
 		Preconditions.checkNotNull(pathToResource);
 		this.inputStream = new ClassPathResource(pathToResource).getInputStream();
 	}

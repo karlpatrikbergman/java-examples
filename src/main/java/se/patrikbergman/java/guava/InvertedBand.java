@@ -2,7 +2,7 @@ package se.patrikbergman.java.guava;
 
 import com.google.common.base.Objects;
 
-public class InvertedBand {
+class InvertedBand {
 	private final String invertedName;
 	private final String invertedDescription;
 	private final int intvertedRockFactor;

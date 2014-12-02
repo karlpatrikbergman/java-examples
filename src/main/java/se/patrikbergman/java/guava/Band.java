@@ -3,7 +3,7 @@ package se.patrikbergman.java.guava;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 
-public class Band {
+class Band {
 	private final String name;
 	private final String description;
 	private final int rockFactor;

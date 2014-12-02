@@ -2,7 +2,7 @@ package se.patrikbergman.java.comparable;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Band implements Comparable<Band> {
+class Band implements Comparable<Band> {
 	private final String name;
 	private final int rockFactor;
 

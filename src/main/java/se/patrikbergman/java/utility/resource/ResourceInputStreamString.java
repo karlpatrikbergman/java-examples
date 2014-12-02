@@ -5,11 +5,11 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 
-public class InputStreamString {
+public class ResourceInputStreamString {
 	private static final String ENCODING = "UTF-8";
 	private final String string;
 
-	public InputStreamString(ResourceInputStream resourceInputStream) throws IOException {
+	public ResourceInputStreamString(final ResourceInputStream resourceInputStream) throws IOException {
 		Preconditions.checkNotNull(resourceInputStream);
 		this.string = IOUtils.toString(resourceInputStream.getInputStream(), ENCODING);
 	}

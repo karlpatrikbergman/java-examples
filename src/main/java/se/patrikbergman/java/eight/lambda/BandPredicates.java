@@ -1,16 +1,16 @@
-package se.patrikbergman.java.lambda;
+package se.patrikbergman.java.eight.lambda;
 
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class BandPredicates {
+class BandPredicates {
 
-	public static Predicate<Band> isHeavyMetalBand() {
+	static Predicate<Band> isHeavyMetalBand() {
 		return b -> b.getRockFactor() >= 8 && !b.getName().startsWith("Ultra");
 	}
 
-	public static List<Band> filterHeavyMetalBands(final List<Band> bands, final Predicate<Band> heavyMetalPredicate) {
+	static List<Band> filterHeavyMetalBands(final List<Band> bands, final Predicate<Band> heavyMetalPredicate) {
 		return bands.stream().filter(heavyMetalPredicate).collect(Collectors.<Band>toList());
 	}
 }
