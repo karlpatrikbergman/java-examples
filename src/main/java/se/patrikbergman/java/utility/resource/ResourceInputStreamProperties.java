@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.Properties;
 
 //TODO: Test inherit Properties
-public class InputStreamProperties {
+public class ResourceInputStreamProperties {
 
 	private final Properties properties;
 
-	public InputStreamProperties(ResourceInputStream resourceInputStream) throws IOException {
+	public ResourceInputStreamProperties(final ResourceInputStream resourceInputStream) throws IOException {
 		Preconditions.checkNotNull(resourceInputStream);
 		this.properties = new Properties();
 		this.properties.load(resourceInputStream.getInputStream());

@@ -9,7 +9,7 @@ public class ResourceProperties {
 
 	public ResourceProperties(final String resourceOnClasspath) throws IOException {
 		this.properties =
-				new InputStreamProperties(
+				new ResourceInputStreamProperties(
 						new ResourceInputStream(resourceOnClasspath)
 				).getProperties();
 	}
