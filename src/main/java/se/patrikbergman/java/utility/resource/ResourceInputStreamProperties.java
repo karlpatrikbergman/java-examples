@@ -8,11 +8,10 @@ import java.util.Properties;
 //TODO: Test inherit Properties
 public class ResourceInputStreamProperties {
 
-	private final Properties properties;
+	private final Properties properties = new Properties();
 
 	public ResourceInputStreamProperties(final ResourceInputStream resourceInputStream) throws IOException {
 		Preconditions.checkNotNull(resourceInputStream);
-		this.properties = new Properties();
 		this.properties.load(resourceInputStream.getInputStream());
 	}
 
