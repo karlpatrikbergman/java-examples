@@ -5,7 +5,6 @@ import com.google.common.base.Preconditions;
 import java.io.IOException;
 import java.util.Properties;
 
-//TODO: Test inherit Properties
 public class ResourceInputStreamProperties extends Properties {
 
 	public ResourceInputStreamProperties(final ResourceInputStream resourceInputStream) throws IOException {

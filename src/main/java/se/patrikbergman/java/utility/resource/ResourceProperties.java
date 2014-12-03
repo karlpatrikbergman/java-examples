@@ -6,6 +6,6 @@ import java.util.Properties;
 public class ResourceProperties extends Properties {
 
 	public ResourceProperties(final String resourceOnClasspath) throws IOException {
-		super(new ResourceInputStreamProperties(new ResourceInputStream(resourceOnClasspath)));
+		super.load((new ResourceInputStream(resourceOnClasspath)));
 	}
 }
