@@ -5,26 +5,24 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.io.IOException;
-import java.util.Properties;
 
 import static org.junit.Assert.assertNotNull;
 
-public class ResourcePropertiesTest {
-
+public class ResourceStringTest {
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
 	private final String resourceOnClassPath = "environment.properties";
 	private final String nonExistingResource = "non-existing-path";
 
 	@Test
-	public void getPropertiesFromResourceOnClasspath() throws IOException {
-		final Properties properties = new ResourceProperties(resourceOnClassPath);
-		assertNotNull(properties);
+	public void getStringFromResourceOnClasspath() throws IOException {
+		final String string = new ResourceString(resourceOnClassPath).toString();
+		assertNotNull(string);
 	}
 
 	@Test
 	public void getNonExistingResource() throws IOException {
 		thrown.expect(IOException.class);
-		final Properties properties = new ResourceProperties(nonExistingResource);
+		final String string = new ResourceString(nonExistingResource).toString();
 	}
 }

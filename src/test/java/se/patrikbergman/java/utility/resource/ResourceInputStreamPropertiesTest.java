@@ -7,6 +7,7 @@ import org.junit.rules.ExpectedException;
 import java.io.IOException;
 import java.util.Properties;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class ResourceInputStreamPropertiesTest {
@@ -18,13 +19,14 @@ public class ResourceInputStreamPropertiesTest {
 
 	@Test
 	public void getPropertiesFromResourceInputStream() throws IOException {
-		Properties properties = new ResourceInputStreamProperties(new ResourceInputStream(resourceOnClassPath)).getProperties();
+		Properties properties = new ResourceInputStreamProperties(new ResourceInputStream(resourceOnClassPath));
 		assertNotNull(properties);
+		assertEquals("bar", properties.getProperty("foo"));
 	}
 
 	@Test
 	public void getNonExistingResource() throws IOException {
 		thrown.expect(IOException.class);
-		Properties properties = new ResourceInputStreamProperties(new ResourceInputStream(nonExistingResource)).getProperties();
+		Properties properties = new ResourceInputStreamProperties(new ResourceInputStream(nonExistingResource));
 	}
 }

@@ -18,7 +18,7 @@ public class ResourceInputStreamTest {
 
 	@Test
 	public void getInputStreamFromResourceOnClasspath() throws IOException {
-		InputStream inputStream = new ResourceInputStream(resourceOnClassPath).getInputStream();
+		InputStream inputStream = new ResourceInputStream(resourceOnClassPath);
 		assertNotNull(inputStream);
 	}
 

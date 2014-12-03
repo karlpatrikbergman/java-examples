@@ -5,13 +5,13 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 
-public class ResourceInputStreamString {
+public class ResourceString {
 	private static final String ENCODING = "UTF-8";
 	private final String string;
 
-	public ResourceInputStreamString(final ResourceInputStream resourceInputStream) throws IOException {
-		Preconditions.checkNotNull(resourceInputStream);
-		this.string = IOUtils.toString(resourceInputStream, ENCODING);
+	public ResourceString(final String resourceOnClasspath) throws IOException {
+		Preconditions.checkNotNull(resourceOnClasspath);
+		this.string = IOUtils.toString(new ResourceInputStream(resourceOnClasspath), ENCODING);
 	}
 
 	@Override

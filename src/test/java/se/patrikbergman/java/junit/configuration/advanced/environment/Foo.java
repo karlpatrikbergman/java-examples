@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class Foo {
 	protected Environment getEnvironment() throws IOException {
-		final Properties prop = new ResourceProperties("config.properties").getProperties();
+		final Properties prop = new ResourceProperties("config.properties");
 		final String envName = getValue(prop, "test.environment", "test");
 		return Environment.fromValue(envName);
 	}

@@ -7,7 +7,7 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class ResourceInputStream {
+public class ResourceInputStream extends InputStream {
 
 	private final InputStream inputStream;
 
@@ -16,7 +16,8 @@ public class ResourceInputStream {
 		this.inputStream = new ClassPathResource(pathToResource).getInputStream();
 	}
 
-	public InputStream getInputStream() {
-		return inputStream;
+	@Override
+	public int read() throws IOException {
+		return inputStream.read();
 	}
 }

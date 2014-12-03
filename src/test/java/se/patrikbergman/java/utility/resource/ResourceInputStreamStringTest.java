@@ -11,11 +11,11 @@ public class ResourceInputStreamStringTest {
 
 	public ExpectedException thrown = ExpectedException.none();
 	private final String resourceOnClassPath = "environment.properties";
-	private final String nonExistingResource = "non-existing-path";
 
 	@Test
 	public void getStringFromInputStream() throws IOException {
-		final String string = new ResourceInputStreamString(new ResourceInputStream(resourceOnClassPath)).getString();
+		final String string = new ResourceInputStreamString(new ResourceInputStream(resourceOnClassPath)).toString();
 		assertNotNull(string);
+		System.out.println(string);
 	}
 }
