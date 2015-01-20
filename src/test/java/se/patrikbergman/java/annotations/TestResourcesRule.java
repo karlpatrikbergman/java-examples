@@ -8,10 +8,10 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class RestRequestConfigurationRule extends ExternalResource {
+public class TestResourcesRule extends ExternalResource {
 	public final Class target;
 
-	public RestRequestConfigurationRule(Class target) {
+	public TestResourcesRule(Class target) {
 		Preconditions.checkNotNull(target, "Test class cannot be null");
 		this.target = target;
 	}

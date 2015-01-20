@@ -12,8 +12,8 @@ public class RestServiceIT {
 	public static LoginRequest loginRequest;
 
 	@ClassRule
-	public static final RestRequestConfigurationRule restRequestConfigurationRule =
-			new RestRequestConfigurationRule(RestServiceIT.class);
+	public static final TestResourcesRule TEST_RESOURCES_RULE =
+			new TestResourcesRule(RestServiceIT.class);
 
 	@Test
 	public void getLoginRequest() {
