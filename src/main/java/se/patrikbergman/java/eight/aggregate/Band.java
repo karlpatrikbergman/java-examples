@@ -1,4 +1,4 @@
-package se.patrikbergman.java.eight.lambda;
+package se.patrikbergman.java.eight.aggregate;
 
 class Band {
 	final String name;

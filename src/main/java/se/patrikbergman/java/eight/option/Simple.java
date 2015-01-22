@@ -1,56 +1,22 @@
 package se.patrikbergman.java.eight.option;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
-public class Foo {
+public class Simple {
 
 	public static void main(String args[]) {
-
-		Guitar guitar = new Guitar("Fender");
-		List<Instrument> instruments = new ArrayList<>();
-		instruments.add(guitar);
-
-		Predicate<Instrument> p = new Predicate<Instrument>() {
-			@Override
-			public boolean test(Instrument instrument) {
-				return instrument.getBrand().equals("Fender");
-			}
-		};
-
-		Function<Instrument, String> f = new Function<Instrument, String>() {
-			@Override
-			public String apply(Instrument instrument) {
-				return instrument.getBrand();
-			}
-		};
-
-		Consumer<String> c = new Consumer<String>() {
-			@Override
-			public void accept(String s) {
-				System.out.println(s);
-			}
-		};
-
-		processInstruments(instruments, p, f, c);
-
+		playAround();
 	}
 
-	public static void processInstruments(
-			List<Instrument> instruments,
-			Predicate<Instrument> tester,
-			Function<Instrument, String> mapper,
-			Consumer<String> block) {
-		for (Instrument instrument : instruments) {
-			if (tester.test(instrument)) {
-				String data = mapper.apply(instrument);
-				block.accept(data);
-			}
-		}
+	public static void playAround() {
+		Guitar guitar = new Guitar("Fender");
+		Optional<Instrument> optionalInstrument = Optional.of(guitar);
+		Member yngwie = new Member("Yngwie Malmsteen", optionalInstrument);
+		yngwie.getInstrument().ifPresent(g -> g.play(10));
+
+		// Should not print anything
+		Member jeff = new Member("Jeff Scott Soto", Optional.empty());
+		jeff.getInstrument().ifPresent(x -> x.play(1));
 	}
 
 	static class Band {
@@ -127,7 +93,7 @@ public class Foo {
 		}
 
 		void log(String action) {
-			System.out.println(String.format("%s.%s() [#%s]", this.getClass().getSimpleName(),
+			System.out.println(String.format("%s.%s() [serial#%s]", this.getClass().getSimpleName(),
 					action, serialNumber));
 		}
 	}

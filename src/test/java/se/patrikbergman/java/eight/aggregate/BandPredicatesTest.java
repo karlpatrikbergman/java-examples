@@ -1,4 +1,4 @@
-package se.patrikbergman.java.eight.lambda;
+package se.patrikbergman.java.eight.aggregate;
 
 import org.junit.Test;
 import se.patrikbergman.java.utility.JsonString;

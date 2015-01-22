@@ -20,6 +20,8 @@ public class Nicely {
 		List<Instrument> instruments = new ArrayList<>();
 		instruments.add(guitar);
 
+		//This...
+
 		Predicate<Instrument> p = new Predicate<Instrument>() {
 			@Override
 			public boolean test(Instrument instrument) {
@@ -43,7 +45,7 @@ public class Nicely {
 
 		processInstruments(instruments, p, f, c);
 
-		//Equals
+		//.. equals
 
 		processInstruments(
 				instruments,
@@ -66,5 +68,4 @@ public class Nicely {
 			}
 		}
 	}
-
 }
