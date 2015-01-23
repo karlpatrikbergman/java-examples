@@ -1,6 +1,6 @@
 package se.patrikbergman.java.pattern.builder;
 
-public enum Genre {
+enum Genre {
     BLUES {
         public String getName() {
             return "Blues";

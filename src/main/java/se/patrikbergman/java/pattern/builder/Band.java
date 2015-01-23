@@ -1,6 +1,6 @@
 package se.patrikbergman.java.pattern.builder;
 
-public class Band {
+class Band {
     private final String name;
     private final String description;
     private final Genre genre;
