@@ -3,6 +3,10 @@ package se.patrikbergman.java.eight.lambda.foo;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
+/**
+ * @TODO
+ * Create a high order function
+ */
 public class Foo {
 
 	public static void main(String args[]) {
