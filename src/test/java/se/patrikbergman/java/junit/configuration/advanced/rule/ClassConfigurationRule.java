@@ -3,8 +3,8 @@ package se.patrikbergman.java.junit.configuration.advanced.rule;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
-import se.patrikbergman.java.junit.configuration.advanced.dependencies.DataSourceFactory;
-import se.patrikbergman.java.junit.configuration.advanced.dependencies.TestDataSource;
+import se.patrikbergman.java.junit.configuration.advanced.DataSourceFactory;
+import se.patrikbergman.java.junit.configuration.advanced.TestDataSource;
 import se.patrikbergman.java.junit.configuration.advanced.rule.annotations.ClassEnvironment;
 
 public class ClassConfigurationRule implements TestRule {

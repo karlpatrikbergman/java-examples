@@ -3,8 +3,6 @@ package se.patrikbergman.java.junit.configuration.advanced;
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
-import se.patrikbergman.java.junit.configuration.advanced.dependencies.TestDataSource;
-import se.patrikbergman.java.junit.configuration.advanced.dependencies.TestServer;
 import se.patrikbergman.java.junit.configuration.advanced.environment.Environment;
 import se.patrikbergman.java.junit.configuration.advanced.rule.ClassConfigurationRule;
 import se.patrikbergman.java.junit.configuration.advanced.rule.MethodConfigurationRule;

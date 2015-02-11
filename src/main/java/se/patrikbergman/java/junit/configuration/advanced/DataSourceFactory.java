@@ -1,4 +1,4 @@
-package se.patrikbergman.java.junit.configuration.advanced.dependencies;
+package se.patrikbergman.java.junit.configuration.advanced;
 
 import se.patrikbergman.java.junit.configuration.advanced.environment.Environment;
 

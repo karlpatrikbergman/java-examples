@@ -28,7 +28,7 @@ public class ParametrizedTest {
 
 	@Test
 	public void factorial() {
-		final Integer actualResult = se.patrikbergman.java.junit.Math.factorial(input);
+		final Integer actualResult = Math.factorial(input);
 		assertEquals(expectedOutput, actualResult);
 		System.out.println(String.format("Input: %s. Expected result: %s. Actual result: %s", input, expectedOutput,
 				actualResult));

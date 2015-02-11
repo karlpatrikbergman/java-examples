@@ -1,6 +1,6 @@
-package se.patrikbergman.java.junit;
+package se.patrikbergman.java.junit.parametrized;
 
-public class Math {
+class Math {
 
 	public static Integer factorial(final Integer number) {
 		if (number <= 0) {
