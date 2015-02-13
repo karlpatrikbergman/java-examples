@@ -1,4 +1,4 @@
-package se.patrikbergman.java.junit.configuration.advanced.environment;
+package se.patrikbergman.java.junit.configuration.rulestest;
 
 public enum Environment {
 	DEV("development"),

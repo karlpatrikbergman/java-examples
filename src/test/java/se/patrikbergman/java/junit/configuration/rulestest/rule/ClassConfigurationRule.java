@@ -1,11 +1,11 @@
-package se.patrikbergman.java.junit.configuration.advanced.rule;
+package se.patrikbergman.java.junit.configuration.rulestest.rule;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
-import se.patrikbergman.java.junit.configuration.advanced.DataSourceFactory;
-import se.patrikbergman.java.junit.configuration.advanced.TestDataSource;
-import se.patrikbergman.java.junit.configuration.advanced.rule.annotations.ClassEnvironment;
+import se.patrikbergman.java.junit.configuration.rulestest.DataSourceFactory;
+import se.patrikbergman.java.junit.configuration.rulestest.TestDataSource;
+import se.patrikbergman.java.junit.configuration.rulestest.rule.annotations.ClassEnvironment;
 
 public class ClassConfigurationRule implements TestRule {
 

@@ -1,6 +1,4 @@
-package se.patrikbergman.java.junit.configuration.advanced;
-
-import se.patrikbergman.java.junit.configuration.advanced.environment.Environment;
+package se.patrikbergman.java.junit.configuration.rulestest;
 
 public final class ServerFactory {
 

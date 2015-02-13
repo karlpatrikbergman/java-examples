@@ -49,9 +49,9 @@ public class Nicely {
 
 		processInstruments(
 				instruments,
-				i -> i.getBrand().getModel().equals("Fender"),
-				i -> i.getBrand().getModel(),
-				model -> System.out.println(model));
+				i -> i.getBrand().getModel().equals("Fender"), 	//Predicate
+				i -> i.getBrand().getModel(),					//Function
+				model -> System.out.println(model));			//Consumer
 
 	}
 

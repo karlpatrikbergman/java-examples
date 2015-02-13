@@ -1,6 +1,6 @@
-package se.patrikbergman.java.junit.configuration.advanced.rule.annotations;
+package se.patrikbergman.java.junit.configuration.rulestest.rule.annotations;
 
-import se.patrikbergman.java.junit.configuration.advanced.environment.Environment;
+import se.patrikbergman.java.junit.configuration.rulestest.Environment;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

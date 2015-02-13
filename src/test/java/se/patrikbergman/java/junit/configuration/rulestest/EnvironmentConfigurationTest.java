@@ -1,13 +1,12 @@
-package se.patrikbergman.java.junit.configuration.advanced;
+package se.patrikbergman.java.junit.configuration.rulestest;
 
 import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
-import se.patrikbergman.java.junit.configuration.advanced.environment.Environment;
-import se.patrikbergman.java.junit.configuration.advanced.rule.ClassConfigurationRule;
-import se.patrikbergman.java.junit.configuration.advanced.rule.MethodConfigurationRule;
-import se.patrikbergman.java.junit.configuration.advanced.rule.annotations.ClassEnvironment;
-import se.patrikbergman.java.junit.configuration.advanced.rule.annotations.MethodEnvironment;
+import se.patrikbergman.java.junit.configuration.rulestest.rule.ClassConfigurationRule;
+import se.patrikbergman.java.junit.configuration.rulestest.rule.MethodConfigurationRule;
+import se.patrikbergman.java.junit.configuration.rulestest.rule.annotations.ClassEnvironment;
+import se.patrikbergman.java.junit.configuration.rulestest.rule.annotations.MethodEnvironment;
 
 @ClassEnvironment(env = Environment.TEST)
 public class EnvironmentConfigurationTest {

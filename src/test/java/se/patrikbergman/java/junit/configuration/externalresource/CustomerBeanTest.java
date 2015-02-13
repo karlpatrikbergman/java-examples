@@ -5,10 +5,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertNotNull;
 
-public class SimpleBeanTest {
+public class CustomerBeanTest {
 
 	private static final SimpleBean simpleBean;
-	private static final String className = SimpleBeanTest.class.getSimpleName();
+	private static final String className = CustomerBeanTest.class.getSimpleName();
 
 	@ClassRule
 	public static final DatabaseResource resource = new DatabaseResource();

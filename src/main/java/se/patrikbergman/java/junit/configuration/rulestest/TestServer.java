@@ -1,4 +1,4 @@
-package se.patrikbergman.java.junit.configuration.advanced;
+package se.patrikbergman.java.junit.configuration.rulestest;
 
 public class TestServer {
 	private final String host;

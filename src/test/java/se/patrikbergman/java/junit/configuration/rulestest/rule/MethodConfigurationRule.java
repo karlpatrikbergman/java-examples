@@ -1,11 +1,11 @@
-package se.patrikbergman.java.junit.configuration.advanced.rule;
+package se.patrikbergman.java.junit.configuration.rulestest.rule;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
-import se.patrikbergman.java.junit.configuration.advanced.ServerFactory;
-import se.patrikbergman.java.junit.configuration.advanced.TestServer;
-import se.patrikbergman.java.junit.configuration.advanced.rule.annotations.MethodEnvironment;
+import se.patrikbergman.java.junit.configuration.rulestest.ServerFactory;
+import se.patrikbergman.java.junit.configuration.rulestest.TestServer;
+import se.patrikbergman.java.junit.configuration.rulestest.rule.annotations.MethodEnvironment;
 
 public class MethodConfigurationRule implements TestRule {
 
