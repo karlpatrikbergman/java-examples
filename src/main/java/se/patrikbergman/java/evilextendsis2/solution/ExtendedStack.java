@@ -5,7 +5,7 @@ import java.util.Iterator;
 public class ExtendedStack<T> implements Stack<T> {
 
 	private int maxCounter, currentSize = 0;
-	private final SimpleStack<T> simpleStack = new SimpleStack(); //Delegation instead of inheritance
+	private final SimpleStack<T> simpleStack = new SimpleStack<>(); //Delegation instead of inheritance
 
 	@Override
 	public void push(T item) {

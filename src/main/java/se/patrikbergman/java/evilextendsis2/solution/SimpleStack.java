@@ -18,6 +18,6 @@ class SimpleStack<T> implements Stack<T> {
 
 	/** Not inherited by ExtendedStack. Delegation used instead **/
 	public void pushMany(Iterator<T> items) {
-		items.forEachRemaining(item -> push(item));
+		items.forEachRemaining(this::push);
 	}
 }

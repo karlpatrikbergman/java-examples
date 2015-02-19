@@ -18,7 +18,9 @@ class FragileBaseStack<T>  {
 
 	/** Inherited by ExtendedStack. Uses method push, and is therefore fragile if changed.  **/
 	public void pushMany(Iterator<T> items) {
-		items.forEachRemaining(item -> push(item));
+		//items.forEachRemaining(item -> push(item)) is equal to below
+		items.forEachRemaining(this::push);
+
 	}
 }
 
