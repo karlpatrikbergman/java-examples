@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 class MusicFestival {
 	private final String name;
-	private final Iterator<Band> lineup;
+	private final Iterator<Band> lineup; //Not coupled to specific implementation
 
 	MusicFestival(final String name, final Iterator<Band> lineup) {
 		this.name = name;
