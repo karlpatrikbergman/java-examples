@@ -14,7 +14,7 @@ class FestivalSummer {
 		roskilde.run();
 	}
 
-	//Festival line-up stored in Map
+	//Roskilde festival line-up stored in Map
 	private static MusicFestival arrangeRoskilde() {
 		final Band accept = new HeavyMetalBand("Accept", 50);
 		final Band theCarterFamily = new CountryBand("The Carter Family", 90);
@@ -24,7 +24,7 @@ class FestivalSummer {
 		return new MusicFestival("Roskilde", bandMap.values().iterator());
 	}
 
-	//Festival line-up stored in Collection
+	//Hultsfred festival line-up stored in Collection
 	private static MusicFestival arrangeHultsfred() {
 		final Band accept = new HeavyMetalBand("Judas Pries", 80);
 		final Band theCarterFamily = new CountryBand("The Flying Burrito Brothers", 20);

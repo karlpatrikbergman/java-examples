@@ -13,9 +13,6 @@ class MusicFestival {
 
 	void run() {
 		System.out.printf("Now it's time for %s\n", name);
-		while(lineup.hasNext()) {
-			final Band band = lineup.next();
-			System.out.printf("%s played show. Score: %s\n", band.getName(), band.play());
-		}
+		lineup.forEachRemaining(band -> System.out.printf("%s played show. Score: %s\n", band.getName(), band.play()));
 	}
 }
