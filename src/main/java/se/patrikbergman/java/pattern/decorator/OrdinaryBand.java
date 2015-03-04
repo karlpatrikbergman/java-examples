@@ -1,6 +1,6 @@
 package se.patrikbergman.java.pattern.decorator;
 
-public class OrdinaryBand implements RockAct {
+class OrdinaryBand implements RockAct {
     private String name;
     private int rockFactor = 100;
 

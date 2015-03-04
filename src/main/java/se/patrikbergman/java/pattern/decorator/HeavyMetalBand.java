@@ -1,6 +1,6 @@
 package se.patrikbergman.java.pattern.decorator;
 
-public class HeavyMetalBand extends RockActDecorator {
+class HeavyMetalBand extends RockActDecorator {
 
 
     public HeavyMetalBand(OrdinaryBand ordinaryBand) {
