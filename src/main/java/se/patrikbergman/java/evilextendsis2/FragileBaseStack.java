@@ -10,13 +10,14 @@ class FragileBaseStack<T>  {
 
 	public void push(T item) {
 		data.add(pointer++, item);
+		System.out.println(FragileBaseStack.class.getSimpleName() + ".push()");
 	}
 
 	public T pop() {
 		return data.remove(--pointer);
 	}
 
-	/** Inherited by ExtendedStack. Uses method push, and is therefore fragile if changed.  **/
+	/** Inherited by ExtendedStack. Uses method push(), and is therefore fragile if changed.  **/
 	public void pushMany(Iterator<T> items) {
 		//items.forEachRemaining(item -> push(item)) is equal to below
 		items.forEachRemaining(this::push);

@@ -29,6 +29,7 @@ public class ExtendedStackTest {
 	/**
 	 * ExtendedStack used pushMany() from parent class
 	 * pushMany() in parent class calls push()
+	 *
 	 * push() is overridden in Extended stack, and counting
 	 * of max number of items is added.
 	 *
@@ -38,7 +39,7 @@ public class ExtendedStackTest {
 	@Test
 	public void pushManyAndPopOne() {
 		Iterator<Integer> iterator = Arrays.asList(1, 10, 32, 3).iterator();
-		extendedStack.pushMany(iterator);
+		extendedStack.pushMany(iterator); //pushMany() is inherited
 		final int latestValue = extendedStack.pop();
 		assertEquals(3, latestValue);
 		assertEquals(4, extendedStack.getMaxSizeSoFar());
