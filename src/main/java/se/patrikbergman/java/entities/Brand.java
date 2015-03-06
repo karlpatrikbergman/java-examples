@@ -15,12 +15,9 @@ public final class Brand {
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
-
 		Brand brand = (Brand) o;
+		return !(model != null ? !model.equals(brand.model) : brand.model != null);
 
-		if (model != null ? !model.equals(brand.model) : brand.model != null) return false;
-
-		return true;
 	}
 
 	@Override

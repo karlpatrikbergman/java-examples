@@ -50,7 +50,7 @@ public class ExtendedStackTest {
 		FragileBaseStack<Boolean> stack = new ExtendedStack<>();
 		Iterator<Boolean> iterator = Arrays.asList(false, false, true, false).iterator();
 		stack.pushMany(iterator);
-		final boolean lastValue = stack.pop();
+		stack.pop();
 		ExtendedStack<Boolean> stackExtended = (ExtendedStack<Boolean>) stack;
 		assertEquals(4, stackExtended.getMaxSizeSoFar());
 	}

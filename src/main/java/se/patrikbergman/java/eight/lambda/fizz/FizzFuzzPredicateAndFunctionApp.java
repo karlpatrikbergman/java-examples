@@ -33,14 +33,11 @@ public class FizzFuzzPredicateAndFunctionApp {
 			}
 		};
 
-		Function<Integer, String> fizzFuzzFizzFuzz = new Function<Integer, String>() {
-			@Override
-			public String apply(Integer integer) {
-				if (fizzFuzz.test(integer)) return "FizzFuzz";
-				if(fizz.test(integer)) return "Fizz";
-				if (fuzz.test(integer)) return "Fuzz";
-				return Integer.toString(integer);
-			}
+		Function<Integer, String> fizzFuzzFizzFuzz = integer -> {
+			if (fizzFuzz.test(integer)) return "FizzFuzz";
+			if(fizz.test(integer)) return "Fizz";
+			if (fuzz.test(integer)) return "Fuzz";
+			return Integer.toString(integer);
 		};
 
 		processIntegers(integers, fizzFuzzFizzFuzz);

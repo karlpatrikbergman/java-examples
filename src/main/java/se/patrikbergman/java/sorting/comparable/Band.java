@@ -1,4 +1,4 @@
-package se.patrikbergman.java.comparable;
+package se.patrikbergman.java.sorting.comparable;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 

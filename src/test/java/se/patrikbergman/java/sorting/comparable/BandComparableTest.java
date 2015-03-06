@@ -1,4 +1,4 @@
-package se.patrikbergman.java.comparable;
+package se.patrikbergman.java.sorting.comparable;
 
 import org.junit.Test;
 import se.patrikbergman.java.utility.JsonString;
@@ -9,13 +9,21 @@ import java.util.Collections;
 import java.util.List;
 
 public class BandComparableTest {
+
 	List<Band> bands = new ArrayList<>();
 	{
-
 		bands.add(new Band.Builder()
 			.name("Accept")
 			.rockFactor(100)
 			.build());
+		bands.add(new Band.Builder()
+				.name("Judas Priest")
+				.rockFactor(100)
+				.build());
+		bands.add(new Band.Builder()
+				.name("Kent")
+				.rockFactor(100)
+				.build());
 		bands.add(new Band.Builder()
 				.name("Iron Maiden")
 				.rockFactor(101)
@@ -27,4 +35,5 @@ public class BandComparableTest {
 		Collections.sort(bands);
 		System.out.println(new JsonString(bands));
 	}
+
 }
