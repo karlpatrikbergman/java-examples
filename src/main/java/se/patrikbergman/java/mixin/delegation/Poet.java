@@ -5,20 +5,21 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-class Band implements Bookable{
+public class Poet implements Bookable {
 	private final String name;
 	private final String description;
-	private final int rockFactor;
+	private final int artFactor;
 	private final BookingService bookingService;
 	private String bookingId;
 
-	private Band(Builder builder) {
-		Preconditions.checkNotNull(builder.name, "Band name cannot be null");
+	private Poet(Builder builder) {
+		Preconditions.checkNotNull(builder.name, "Poet name cannot be null");
+		Preconditions.checkNotNull(builder.description, "Poet description cannot be null");
 		Preconditions.checkNotNull(builder.bookingService, "BookingService cannot be null");
 
 		name = builder.name;
 		description = builder.description;
-		rockFactor = builder.rockFactor;
+		artFactor = builder.artFactor;
 		bookingService = builder.bookingService;
 	}
 
@@ -30,12 +31,12 @@ class Band implements Bookable{
 		return description;
 	}
 
-	public int getRockFactor() {
-		return rockFactor;
+	public int getArtFactor() {
+		return artFactor;
 	}
 
-	public void play() {
-		System.out.println(String.format("%s is playing, rock factor is %s", name, rockFactor));
+	public void read() {
+		System.out.println(String.format("%s is reading poetry, art factor is %s", name, artFactor));
 	}
 
 	/**
@@ -66,13 +67,13 @@ class Band implements Bookable{
 
 	@Override
 	public void perform() {
-		play();
+		read();
 	}
 
 	public static final class Builder {
 		private String name;
 		private String description;
-		private int rockFactor;
+		private int artFactor;
 		private BookingService bookingService;
 
 		public Builder() {
@@ -88,8 +89,8 @@ class Band implements Bookable{
 			return this;
 		}
 
-		public Builder rockFactor(int rockFactor) {
-			this.rockFactor = rockFactor;
+		public Builder artFactor(int artFactor) {
+			this.artFactor = artFactor;
 			return this;
 		}
 
@@ -98,8 +99,8 @@ class Band implements Bookable{
 			return this;
 		}
 
-		public Band build() {
-			return new Band(this);
+		public Poet build() {
+			return new Poet(this);
 		}
 	}
 
@@ -109,18 +110,18 @@ class Band implements Bookable{
 	}
 
 	@Override
-	 public boolean equals(Object obj) {
-		if (obj instanceof Band == false) {
+	public boolean equals(Object obj) {
+		if (obj instanceof Poet == false) {
 			return false;
 		}
 		if (this == obj) {
 			return true;
 		}
-		final Band band = (Band) obj;
+		final Poet poet = (Poet) obj;
 		return new EqualsBuilder()
-			.append(this.name, band.name)
-			.append(this.description, band.description)
-			.append(this.rockFactor, band.rockFactor)
+				.append(this.name, poet.name)
+				.append(this.description, poet.description)
+			.append(this.artFactor, poet.artFactor)
 			.isEquals();
 	}
 

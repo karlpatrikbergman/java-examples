@@ -55,8 +55,8 @@ public class DoubleColonTest {
 	/**
 	 * Can be replaced by Consumer!
 	 */
-	interface Command {
-		void execute(String string);
+	interface Command<T> {
+		void execute(T argument);
 	}
 
 	@Test
@@ -84,5 +84,21 @@ public class DoubleColonTest {
 		Scrambler scrambler = new Scrambler();
 		Function<String, String> function = scrambler::scramble;
 		System.out.println(function.apply("Patrik Bergman"));
+	}
+
+
+	/****/
+
+	/**
+	 * Peculiar example
+	 */
+	public interface Callable<T> {
+		public T call();
+	}
+
+	@Test
+	public void callMe() {
+		Callable<String> strCallable = () -> "Hello world";
+		System.out.println(strCallable.call());
 	}
 }

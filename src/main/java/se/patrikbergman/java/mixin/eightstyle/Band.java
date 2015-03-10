@@ -1,25 +1,22 @@
-package se.patrikbergman.java.mixin.delegation;
+package se.patrikbergman.java.mixin.eightstyle;
 
 import com.google.common.base.Preconditions;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-class Band implements Bookable{
+class Band {
 	private final String name;
 	private final String description;
 	private final int rockFactor;
-	private final BookingService bookingService;
 	private String bookingId;
 
 	private Band(Builder builder) {
 		Preconditions.checkNotNull(builder.name, "Band name cannot be null");
-		Preconditions.checkNotNull(builder.bookingService, "BookingService cannot be null");
 
 		name = builder.name;
 		description = builder.description;
 		rockFactor = builder.rockFactor;
-		bookingService = builder.bookingService;
 	}
 
 	public String getName() {
@@ -38,42 +35,11 @@ class Band implements Bookable{
 		System.out.println(String.format("%s is playing, rock factor is %s", name, rockFactor));
 	}
 
-	/**
-	 * Boiler plate code. Could in practice be many methods just delegating to some other class
-	 * @return
-	 */
-	@Override
-	public String book() {
-		bookingService.cancel(bookingId);
-		this.bookingId = bookingService.book(this.name);
-		return bookingId;
-	}
-
-	@Override
-	public void cancel() {
-		bookingService.cancel(bookingId);
-	}
-
-	@Override
-	public boolean confirmBooking() {
-		return bookingService.confirmBooking(bookingId);
-	}
-
-	@Override
-	public String getBookingId() {
-		return bookingId;
-	}
-
-	@Override
-	public void perform() {
-		play();
-	}
 
 	public static final class Builder {
 		private String name;
 		private String description;
 		private int rockFactor;
-		private BookingService bookingService;
 
 		public Builder() {
 		}
@@ -90,11 +56,6 @@ class Band implements Bookable{
 
 		public Builder rockFactor(int rockFactor) {
 			this.rockFactor = rockFactor;
-			return this;
-		}
-
-		public Builder bookingService(BookingService bookingService) {
-			this.bookingService = bookingService;
 			return this;
 		}
 

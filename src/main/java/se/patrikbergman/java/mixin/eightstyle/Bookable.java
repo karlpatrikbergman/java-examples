@@ -1,7 +1,9 @@
-package se.patrikbergman.java.mixin.delegation;
+package se.patrikbergman.java.mixin.eightstyle;
 
 public interface Bookable {
-	String book();
+	default String book() {
+		return null;
+	}
 	void cancel();
 	boolean confirmBooking();
 	String getBookingId();
