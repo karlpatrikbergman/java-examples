@@ -1,7 +1,5 @@
 package se.patrikbergman.java.junit.configuration.rulestest;
 
-import com.google.common.base.Objects;
-
 public class TestDataSource {
 	private final String driverName;
 	private final String serverDnsName;
@@ -49,13 +47,14 @@ public class TestDataSource {
 
 	@Override
 	public String toString() {
-		return Objects.toStringHelper(this)
-				.add("driverName", driverName)
-				.add("serverDnsName", serverDnsName)
-				.add("portNumber", portNumber)
-				.add("serviceName", serviceName)
-				.add("userName", userName)
-				.add("password", password)
-				.toString();
+		final StringBuffer sb = new StringBuffer("TestDataSource{");
+		sb.append("driverName='").append(driverName).append('\'');
+		sb.append(", serverDnsName='").append(serverDnsName).append('\'');
+		sb.append(", portNumber='").append(portNumber).append('\'');
+		sb.append(", serviceName='").append(serviceName).append('\'');
+		sb.append(", userName='").append(userName).append('\'');
+		sb.append(", password='").append(password).append('\'');
+		sb.append('}');
+		return sb.toString();
 	}
 }

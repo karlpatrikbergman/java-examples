@@ -2,6 +2,7 @@ package se.patrikbergman.java.guava;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 class Band {
 	private final String name;
@@ -29,11 +30,7 @@ class Band {
 
 	@Override
 	public String toString() {
-		return Objects.toStringHelper(this)
-				.add("name", name)
-				.add("description", description)
-				.add("rockFactor", rockFactor)
-				.toString();
+		return ToStringBuilder.reflectionToString(this);
 	}
 
 

@@ -1,6 +1,6 @@
 package se.patrikbergman.java.guava;
 
-import com.google.common.base.Objects;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 class InvertedBand {
 	private final String invertedName;
@@ -27,10 +27,6 @@ class InvertedBand {
 
 	@Override
 	public String toString() {
-		return Objects.toStringHelper(this)
-				.add("invertedName", invertedName)
-				.add("invertedDescription", invertedDescription)
-				.add("intvertedRockFactor", intvertedRockFactor)
-				.toString();
+		return ToStringBuilder.reflectionToString(this);
 	}
 }

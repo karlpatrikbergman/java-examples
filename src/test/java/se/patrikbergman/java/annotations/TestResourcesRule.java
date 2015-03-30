@@ -8,8 +8,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+@SuppressWarnings({"NullArgumentToVariableArgMethod", "unchecked"})
 public class TestResourcesRule extends ExternalResource {
-	public final Class target;
+	private final Class target;
 
 	public TestResourcesRule(Class target) {
 		Preconditions.checkNotNull(target, "Test class cannot be null");
