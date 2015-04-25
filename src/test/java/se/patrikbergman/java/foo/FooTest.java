@@ -3,6 +3,7 @@ package se.patrikbergman.java.foo;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ListIterator;
 import java.util.Vector;
 
 public class FooTest {
@@ -20,11 +21,11 @@ public class FooTest {
 
         @Override
         public String toString() {
-            return "Fiber: distance + " + distance;
+            return "Fiber: distance " + distance;
         }
     }
 
-    private Vector<Object> components = new Vector<>();
+    private final Vector<Object> components = new Vector<>();
 
     @Before
     public void setup() {
@@ -41,6 +42,16 @@ public class FooTest {
         components.add("NodeE");
     }
 
+
+    @Test
+    public void bar() {
+        ListIterator<Object> listIterator = components.listIterator();
+        while (listIterator.hasNext()) {
+            if(listIterator.hasPrevious())
+            System.out.println(listIterator.previousIndex());
+            System.out.println(listIterator.next());
+        }
+    }
 
     @Test
     public void foo() {
