@@ -11,7 +11,10 @@ public class LatencyAndDistanceDetails {
         double accumulatedFiberLength = 0;
 
 
-        //C F4 F4
+        //C F4 C F4 C
+        //C F4 F4 F4 C
+        //C F0.4 F0.4 C F4 C
+        //C F4 F0.4 C F
 
         for(Component component: components) {
             if(component instanceof Fiber) {
@@ -19,13 +22,18 @@ public class LatencyAndDistanceDetails {
                     if( ((Fiber) component).getDistance() >= 0.5) {
                         numberOfFiberSpans++;
                         previousComponenIsFiber = true;
-                        accumulatedFiberLength = 0;
                     } else {
-
+                        accumulatedFiberLength += ((Fiber) component).getDistance();
+                        if(accumulatedFiberLength >= 0.5) {
+                            numberOfFiberSpans++;
+                            previousComponenIsFiber = true;
+                            accumulatedFiberLength = 0;
+                        }
                     }
                 }
             } else {
                 previousComponenIsFiber = false;
+                accumulatedFiberLength = 0;
             }
         }
         return numberOfFiberSpans;

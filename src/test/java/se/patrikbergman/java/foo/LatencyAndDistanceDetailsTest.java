@@ -35,7 +35,12 @@ public class LatencyAndDistanceDetailsTest {
         final DMU dmu = new DMU();
 
         return Arrays.asList(new Object[][]{
-                {new Vector<Component>(Arrays.asList(dmu, fourKmFiber, dmu)), 1}
+                {new Vector<Component>(Arrays.asList(dmu, fourKmFiber, dmu)), 1},
+                {new Vector<Component>(Arrays.asList(dmu, fourHundredMeterFiber, dmu, fourHundredMeterFiber)), 0},
+                {new Vector<Component>(Arrays.asList(dmu, fourHundredMeterFiber, fourHundredMeterFiber, fourKmFiber, dmu)), 1},
+                {new Vector<Component>(Arrays.asList(dmu, fourKmFiber, fourHundredMeterFiber, fourHundredMeterFiber, dmu)), 1},
+                {new Vector<Component>(Arrays.asList(dmu, fourKmFiber, fourHundredMeterFiber, fourHundredMeterFiber, fourHundredMeterFiber, fourHundredMeterFiber)), 1},
+                {new Vector<Component>(Arrays.asList(dmu, fourHundredMeterFiber, fourHundredMeterFiber, dmu)), 1}
         });
     }
 
