@@ -11,10 +11,6 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 
-/**
- * Example of parametrized test
- */
-
 @RunWith(Parameterized.class)
 public class ParametrizedTest {
 
