@@ -11,19 +11,19 @@ import java.util.Vector;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class LatencyAndDistanceDetailsTest {
+public class FiberDetailsTest {
 
     private final Vector<Component> components;
     private final int expectedNumberOfFiberSpans;
 
-    public LatencyAndDistanceDetailsTest(final Vector<Component> components, final int expectedNumberOfFiberSpans) {
+    public FiberDetailsTest(final Vector<Component> components, final int expectedNumberOfFiberSpans) {
         this.components = components;
         this.expectedNumberOfFiberSpans = expectedNumberOfFiberSpans;
     }
 
     @Test
     public void test() {
-        int actualNumberOfFiberSpans = LatencyAndDistanceDetails.getNumberOfFiberSpans(components);
+        int actualNumberOfFiberSpans = FiberDetails.getNumberOfFiberSpans(components);
         assertEquals(expectedNumberOfFiberSpans, actualNumberOfFiberSpans);
     }
 
