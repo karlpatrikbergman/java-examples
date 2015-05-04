@@ -35,12 +35,12 @@ public class LatencyAndDistanceDetailsTest {
         final DMU dmu = new DMU();
 
         return Arrays.asList(new Object[][]{
-                {new Component[]{dmu, fourKmFiber, dmu}, 1},
-                {new Component[]{dmu, fourHundredMeterFiber, dmu, fourHundredMeterFiber}, 0},
-                {new Component[]{dmu, fourHundredMeterFiber, fourHundredMeterFiber, fourKmFiber, dmu}, 1},
-                {new Component[]{dmu, fourKmFiber, fourHundredMeterFiber, fourHundredMeterFiber, dmu}, 1},
-                {new Component[]{dmu, fourKmFiber, fourHundredMeterFiber, fourHundredMeterFiber, fourHundredMeterFiber, fourHundredMeterFiber}, 1},
-                {new Component[]{dmu, fourHundredMeterFiber, fourHundredMeterFiber, dmu}, 1}
+                {createVector(new Component[]{dmu, fourKmFiber, dmu}), 1},
+                {createVector(new Component[]{dmu, fourHundredMeterFiber, dmu, fourHundredMeterFiber}), 0},
+                {createVector(new Component[]{dmu, fourHundredMeterFiber, fourHundredMeterFiber, fourKmFiber, dmu}), 1},
+                {createVector(new Component[]{dmu, fourKmFiber, fourHundredMeterFiber, fourHundredMeterFiber, dmu}), 1},
+                {createVector(new Component[]{dmu, fourKmFiber, fourHundredMeterFiber, fourHundredMeterFiber, fourHundredMeterFiber, fourHundredMeterFiber}), 1},
+                {createVector(new Component[]{dmu, fourHundredMeterFiber, fourHundredMeterFiber, dmu}), 1}
         });
     }
 
