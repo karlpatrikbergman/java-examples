@@ -27,7 +27,6 @@ public class FiberDetailsTest {
         assertEquals(expectedNumberOfFiberSpans, actualNumberOfFiberSpans);
     }
 
-
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
         final Fiber fourKmFiber = new Fiber(4);
