@@ -1,4 +1,4 @@
-package se.patrikbergman.java.foo;
+package se.patrikbergman.java.fiberspan;
 
 class Fiber implements Component {
     private final double distance;

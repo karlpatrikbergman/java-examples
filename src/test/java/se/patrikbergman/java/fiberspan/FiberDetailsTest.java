@@ -1,4 +1,4 @@
-package se.patrikbergman.java.foo;
+package se.patrikbergman.java.fiberspan;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

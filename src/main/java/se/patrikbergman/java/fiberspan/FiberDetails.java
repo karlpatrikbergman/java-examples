@@ -1,4 +1,4 @@
-package se.patrikbergman.java.foo;
+package se.patrikbergman.java.fiberspan;
 
 
 import java.util.List;
