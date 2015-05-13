@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 
 /**
  * Double colon syntax:
- * Classname::methodname 			if method is static
- * instanceVarName :: methodname 	if method is non static
+ * ClassName::methodName 			if method is static
+ * instanceVarName :: methodName 	if method is non static
  */
 public class DoubleColonTest {
 
@@ -92,8 +92,8 @@ public class DoubleColonTest {
 	/**
 	 * Peculiar example
 	 */
-	public interface Callable<T> {
-		public T call();
+	interface Callable<T> {
+		T call();
 	}
 
 	@Test
