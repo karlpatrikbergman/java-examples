@@ -5,8 +5,15 @@ import org.junit.Test;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class ReduceTest {
+
+    private final DecimalFormat df = new DecimalFormat("###.##");
 
     private final List<Component> components = Arrays.asList(
             new Mux(),
@@ -66,6 +73,7 @@ public class ReduceTest {
     /**
      * Performs a reduction on the elements of this stream, using the provided identity, accumulation and combining
      * functions.
+     * With stream() accumulator does all the work
      */
     @Test
     public void reduce3() {
@@ -74,7 +82,7 @@ public class ReduceTest {
                 .reduce(0d,
                         (accumulatedDistance, component) -> (accumulatedDistance += ((Fiber) component).getDistance()),
                         (accumulatedDistance1, accumulatedDistance2) -> accumulatedDistance1 + accumulatedDistance2);
-        System.out.println(totalDistance);
+        System.out.println(df.format(totalDistance));
     }
 
     /**
@@ -82,14 +90,13 @@ public class ReduceTest {
      */
     @Test
     public void reduce3WithSystemOut() {
-        DecimalFormat df = new DecimalFormat("###.##");
         Double totalDistance = components.parallelStream()
 //        Double totalDistance = components.stream()
                 .filter(c -> c instanceof Fiber)
                 .reduce(0.0d,
-                        (accumulatedDistance, component) -> {
-                            log("accumulator: distance: " + df.format(accumulatedDistance), "component: " + component.toString());
-                            return (accumulatedDistance += ((Fiber) component).getDistance());
+                        (accumulatedDistance, c) -> {
+                            log("accumulator: distance: " + df.format(accumulatedDistance), "component: " + c.toString());
+                            return (accumulatedDistance += ((Fiber) c).getDistance());
                         },
                         (accumulatedDistance1, accumulatedDistance2) -> {
                             log("combiner   : sumdist1: " + df.format(accumulatedDistance1), "distance2: " + df.format(accumulatedDistance2));
@@ -101,4 +108,91 @@ public class ReduceTest {
     void log(String column1, String column2) {
         System.out.format("%-30s %-20s\n", column1, column2);
     }
+
+    /***/
+
+
+    @Test
+    public void calculateNumberOfFiberSpans() {
+        Params params = calcFiberSpan.apply(
+                new Params.Builder()
+                        .accumulatedDistance(0)
+                        .numberOfFiberSpans(0)
+                        .previousComponentFiber(false)
+                        .build(),
+                new Fiber(1)
+        );
+        assertEquals(1, params.numberOfFiberSpans);
+    }
+
+    @Test
+    public void calculateNumberOfFiberSpans2() {
+        Params params = calcFiberSpan.apply(
+                new Params.Builder()
+                        .accumulatedDistance(0)
+                        .numberOfFiberSpans(0)
+                        .previousComponentFiber(false)
+                        .build(),
+                new Mux()
+        );
+        assertEquals(0, params.numberOfFiberSpans);
+    }
+
+    @Test
+    public void calculateFiberSpans3() {
+        Params identity = new Params.Builder()
+                .accumulatedDistance(0)
+                .previousComponentFiber(false)
+                .numberOfFiberSpans(0)
+                .build();
+
+        Params params = components.stream()
+                .reduce(identity,
+                        (p, c) -> { return calcFiberSpan.apply(p, c);},
+                        (params1, params2) -> { return addParams.apply(params1, params1);}
+        );
+        assertNotNull(params);
+        System.out.println(params);
+    }
+
+    BinaryOperator<Params> addParams = new BinaryOperator<Params>() {
+        @Override
+        public Params apply(Params params, Params params2) {
+            return new Params.Builder()
+                    .accumulatedDistance(0)
+                    .previousComponentFiber(false)
+                    .numberOfFiberSpans(params.numberOfFiberSpans + params2.getNumberOfFiberSpans())
+                    .build();
+        }
+    };
+
+    BiFunction<Params, Component, Params> calcFiberSpan = new BiFunction<Params, Component, Params>() {
+        @Override
+        public Params apply(Params params, Component component) {
+            Params.Builder paramsBuilder = new Params.Builder();
+
+            if(component instanceof Fiber) {
+                if(!params.previousComponentFiber) {
+                    if (((Fiber) component).getDistance() >= 0.5) {
+                        paramsBuilder.numberOfFiberSpans(params.getNumberOfFiberSpans() + 1);
+                        paramsBuilder.previousComponentFiber(true);
+                        paramsBuilder.accumulatedDistance(0);
+                    } else {
+                        paramsBuilder.accumulatedDistance(params.accumulatedDistance + ((Fiber) component).getDistance());
+                        paramsBuilder.numberOfFiberSpans(params.numberOfFiberSpans);
+                        if (paramsBuilder.getAccumulatedDistance() >= 0.5) {
+                            paramsBuilder.numberOfFiberSpans(paramsBuilder.getNumberOfFiberSpans() + params.getNumberOfFiberSpans() + 1);
+                            paramsBuilder.previousComponentFiber(true);
+                            paramsBuilder.accumulatedDistance(0);
+                        }
+                    }
+                }
+            } else {
+                paramsBuilder.previousComponentFiber(false);
+                paramsBuilder.accumulatedDistance(0);
+                paramsBuilder.numberOfFiberSpans(params.numberOfFiberSpans);
+            }
+            return paramsBuilder.build();
+        }
+    };
 }

@@ -1,6 +1,9 @@
 package se.patrikbergman.java.eight.stream;
 
+import java.text.DecimalFormat;
+
 class Fiber implements Component {
+    private final DecimalFormat df = new DecimalFormat("###.##");
     private final double distance;
 
     Fiber(double distance) {
@@ -19,6 +22,6 @@ class Fiber implements Component {
 
     @Override
     public String toString() {
-        return String.format("%s (serial: %s distance: %s)", Fiber.class.getSimpleName(), getSerialNumber(), distance);
+        return String.format("%s (serial: %s distance: %s)", Fiber.class.getSimpleName(), getSerialNumber(), df.format(distance));
     }
 }
