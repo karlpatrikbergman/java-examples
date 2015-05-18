@@ -3,21 +3,21 @@ package se.patrikbergman.java.eight.stream;
 import lombok.Data;
 
 @Data
-public class Params {
+public class CalcResult {
     final boolean previousComponentFiber;
     final double accumulatedDistance;
     final int numberOfFiberSpans;
 
-    private Params(Builder builder) {
+    private CalcResult(Builder builder) {
         previousComponentFiber = builder.previousComponentFiber;
         accumulatedDistance = builder.accumulatedDistance;
         numberOfFiberSpans = builder.numberOfFiberSpans;
     }
 
     public static final class Builder {
-        private boolean previousComponentFiber;
-        private double accumulatedDistance;
-        private int numberOfFiberSpans;
+        private boolean previousComponentFiber = false;
+        private double accumulatedDistance = 0;
+        private int numberOfFiberSpans = 0;
 
         public double getAccumulatedDistance() {
             return accumulatedDistance;
@@ -25,6 +25,10 @@ public class Params {
 
         public int getNumberOfFiberSpans() {
             return numberOfFiberSpans;
+        }
+
+        public void addFiberSpan() {
+            this.numberOfFiberSpans++;
         }
 
         public Builder() {
@@ -45,8 +49,8 @@ public class Params {
             return this;
         }
 
-        public Params build() {
-            return new Params(this);
+        public CalcResult build() {
+            return new CalcResult(this);
         }
     }
 }
