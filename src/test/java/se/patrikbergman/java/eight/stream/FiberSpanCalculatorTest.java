@@ -1,33 +1,25 @@
 package se.patrikbergman.java.eight.stream;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.Collection;
+import java.util.Vector;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(Parameterized.class)
 public class FiberSpanCalculatorTest {
 
-    private final List<Component> components = Arrays.asList(
-            new Mux(),
-            new Fiber(0.4),
-            new OA(),
-            new Fiber(2.0),
-            new OA(),
-            new Fiber(1.3),
-            new OA(),
-            new Fiber(4.3),
-            new OA(),
-            new Fiber(3.9),
-            new OA(),
-            new Fiber(0.3),
-            new OA(),
-            new Fiber(0.3),
-            new OA(),
-            new Fiber(9.4),
-            new DeMux()
-    );
+    private final Vector<Component> components;
+    private final int expectedNumberOfFiberSpans;
+
+    public FiberSpanCalculatorTest(final Vector<Component> components, final int numberOfFiberSpans) {
+        this.components= components;
+        this.expectedNumberOfFiberSpans = numberOfFiberSpans;
+    }
 
     /**
      * Tests only BiConsumer method
@@ -62,9 +54,30 @@ public class FiberSpanCalculatorTest {
     }
 
     @Test
-    public void calculateFiberSpansForVariousComponents() {
+    public void calculateNumberOfFiberSpans() {
         final CalcResult calcResult = FiberSpanCalculator.calculateNumberOfFiberSpans(components);
-        assertEquals(5, calcResult.numberOfFiberSpans);
-        System.out.println(calcResult);
+        final int actualNumberOfFiberSpans = calcResult.numberOfFiberSpans;
+        assertEquals(expectedNumberOfFiberSpans, actualNumberOfFiberSpans);
+    }
+
+    @Parameterized.Parameters
+    public static Collection<Object[]> data() {
+        final Fiber fourKmFiber = new Fiber(4.0);
+        final Fiber fourHundredMeterFiber = new Fiber(0.4); //Fiber under 0.5 km should not be counted as fiber span
+        final DeMux deMux = new DeMux();
+        final Mux mux = new Mux();
+        final OA oa = new OA();
+
+        return Arrays.asList(new Object[][]{
+                {new Vector<>(Arrays.asList(deMux, fourKmFiber, mux, fourKmFiber, mux)), 2},
+                {new Vector<>(Arrays.asList(mux, fourKmFiber, fourHundredMeterFiber, mux, fourKmFiber, deMux)), 2},
+                {new Vector<>(Arrays.asList(mux, fourHundredMeterFiber, fourKmFiber, mux, fourKmFiber, deMux)), 2},
+                {new Vector<>(Arrays.asList(mux, fourHundredMeterFiber, fourHundredMeterFiber, oa, fourKmFiber, deMux)), 2},
+                {new Vector<>(Arrays.asList(mux, fourHundredMeterFiber, fourHundredMeterFiber, fourKmFiber, oa, fourKmFiber, deMux)), 2},
+                {new Vector<>(Arrays.asList(mux, fourKmFiber, fourHundredMeterFiber, fourHundredMeterFiber, oa, fourKmFiber, deMux)), 2},
+                {new Vector<>(Arrays.asList(mux, fourKmFiber, fourHundredMeterFiber, fourHundredMeterFiber, oa, fourKmFiber, deMux)), 2},
+                {new Vector<>(Arrays.asList(mux, fourHundredMeterFiber, fourHundredMeterFiber, fourKmFiber, oa, fourKmFiber, deMux)), 2},
+                {new Vector<>(Arrays.asList(mux, fourHundredMeterFiber, oa, fourHundredMeterFiber, oa, fourKmFiber, oa, fourKmFiber, deMux)), 2}
+        });
     }
 }

@@ -104,8 +104,4 @@ public class ReduceTest {
         System.out.format("%-30s %-20s\n", column1, column2);
     }
 
-    /***/
-
-
-
 }

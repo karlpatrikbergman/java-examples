@@ -10,14 +10,13 @@ class FiberSpanCalculator {
     private static final double MIN_FIBER_LENGTH = 0.5;
 
     /**
-     * TODO:
-     * Verify that parallelStream will give correct result in all cases
+     * Parallel stream does not work!
      *
      * @param components a collection of components, some of them might be Fiber components
      * @return number of found Fiber components that meets criteria
      */
     static CalcResult calculateNumberOfFiberSpans(final Collection<Component> components) {
-        return components.parallelStream()
+        return components.stream()
                 .reduce(new CalcResult.Builder() //identity value, see java doc
                                 .accumulatedDistance(0)
                                 .previousComponentFiber(false)
@@ -58,7 +57,8 @@ class FiberSpanCalculator {
 
 
     /**
-     * Only active when using parallelStream(), and does parallelStream() return expected result?
+     * Only active when using parallelStream(), and parallelStream() does not work when calculating fiber spans, since
+     * calculation order matters
      */
     private static final BinaryOperator<CalcResult> addResult = (fiberCalcResult, fiberCalcResult2) -> new CalcResult.Builder()
             .accumulatedDistance(0)
