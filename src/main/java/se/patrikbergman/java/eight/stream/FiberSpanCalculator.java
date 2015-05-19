@@ -23,19 +23,19 @@ class FiberSpanCalculator {
             .reduce(
                 new CalcResult.Builder().build(), //identity value, see java doc´
                 calcFiberSpan::apply,
-                addResult::apply
+                addResult::apply//Not used
             );
     }
 
     final static List<CalcResult> calculateFiberSpansPerChannel(final Collection<Component> components, final int nrOfChannels) {
         return IntStream.range(0, nrOfChannels)
             .mapToObj(channelIndex ->
-                            components.stream()
-                                    .reduce(
-                                            new CalcResult.Builder().build(),
-                                            getFiberSpanCalcFunction(channelIndex),
-                                            addResult::apply //Not used
-                                    )
+                components.stream()
+                    .reduce(
+                        new CalcResult.Builder().build(),
+                        getFiberSpanCalcFunction(channelIndex),
+                        addResult::apply //Not used
+                    )
             ).collect(Collectors.toList());
     }
 
@@ -44,14 +44,20 @@ class FiberSpanCalculator {
      */
     final static BiFunction<CalcResult, Component, CalcResult> getFiberSpanCalcFunction(int channelIndex) {
         return (resultIn, component) -> {
+
             CalcResult.Builder resultOutBuilder = new CalcResult.Builder();
             resultOutBuilder.getFiberSpansList().addAll(resultIn.getFiberSpansList());
 
+            //TODO:
+            //This is the only lines of code that differs between fiber span cal with
+            //vs without channel
+            //from here...
             if (channelIsDropped.apply(component, channelIndex)) {
                 resultOutBuilder.getFiberSpansList().add(resultIn.numberOfFiberSpans);
             } else {
                 resultOutBuilder.numberOfFiberSpans(resultIn.numberOfFiberSpans);
             }
+            //to here! Factor out!
 
             final Consumer<CalcResult.Builder> fiberSpanFound = (result) -> {
                 result.addFiberSpan();
@@ -84,14 +90,14 @@ class FiberSpanCalculator {
      */
     static final BiFunction<CalcResult, Component, CalcResult> calcFiberSpan = (resultIn, component) -> {
 
+        CalcResult.Builder resultOutBuilder = new CalcResult.Builder();
+        resultOutBuilder.numberOfFiberSpans(resultIn.numberOfFiberSpans);
+
         final Consumer<CalcResult.Builder> fiberSpanFound = (result) -> {
             result.addFiberSpan();
             result.previousComponentFiber(true);
             result.accumulatedDistance(0);
         };
-
-        CalcResult.Builder resultOutBuilder = new CalcResult.Builder();
-        resultOutBuilder.numberOfFiberSpans(resultIn.numberOfFiberSpans);
 
         if (component instanceof Fiber) {
             final Fiber fiber = ((Fiber) component);
