@@ -55,7 +55,7 @@ public class FiberSpanCalculatorTest {
 
     @Test
     public void calculateNumberOfFiberSpans() {
-        final CalcResult calcResult = FiberSpanCalculator.calculateNumberOfFiberSpans(components);
+        final CalcResult calcResult = FiberSpanCalculator.calculateFiberSpansPerSystem(components);
         final int actualNumberOfFiberSpans = calcResult.numberOfFiberSpans;
         assertEquals(expectedNumberOfFiberSpans, actualNumberOfFiberSpans);
     }

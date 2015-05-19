@@ -7,11 +7,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.function.BiFunction;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class FiberSpansPerChannelTest {
 
@@ -43,68 +38,7 @@ public class FiberSpansPerChannelTest {
 
     @Test
     public void calculateFiberSpansPerChannel() {
-
-        IntStream.range(0, 2)
-            .mapToObj(channelIndex ->
-                components.stream()
-                    .reduce(
-                            new CalcResult.Builder().build(),
-                            getFiberSpanCalcFunction(channelIndex),
-                            addResult::apply //Not used
-                    )
-            )
-            .collect(Collectors .toList())
-            .stream()
-            .forEach(calcResult -> System.out.println(calcResult.getTotalResult()));
+        FiberSpanCalculator.calculateFiberSpansPerChannel(components, 5).stream()
+        .forEach(calcResult -> System.out.println(calcResult.getTotalResult()));
     }
-
-    private BiFunction<CalcResult, Component, CalcResult> getFiberSpanCalcFunction(int channelIndex) {
-
-        return (resultIn, component) -> {
-
-            CalcResult.Builder resultOutBuilder = new CalcResult.Builder();
-            resultOutBuilder.getFiberSpansList().addAll(resultIn.getFiberSpansList());
-
-            if (channelIsDropped.apply(component, channelIndex)) {
-                resultOutBuilder.getFiberSpansList().add(resultIn.numberOfFiberSpans);
-            } else {
-                resultOutBuilder.numberOfFiberSpans(resultIn.numberOfFiberSpans);
-            }
-
-            final Consumer<CalcResult.Builder> fiberSpanFound = (result) -> {
-                result.addFiberSpan();
-                result.previousComponentFiber(true);
-                result.accumulatedDistance(0);
-            };
-
-            if (component instanceof Fiber) {
-                final Fiber fiber = ((Fiber) component);
-                if (!resultIn.previousComponentFiber) {
-                    if (fiber.getDistance() >= 0.5) {
-                        fiberSpanFound.accept(resultOutBuilder);
-                    } else {
-                        resultOutBuilder.accumulatedDistance(resultIn.accumulatedDistance + fiber.getDistance());
-                        if (resultOutBuilder.getAccumulatedDistance() >= 0.5) {
-                            fiberSpanFound.accept(resultOutBuilder);
-                        }
-                    }
-                }
-            }
-            return resultOutBuilder.build();
-        };
-    }
-
-
-    BiFunction<Component, Integer, Boolean> channelIsDropped = (component, channelIndex) ->
-            (component instanceof AddDropComponent && ((AddDropComponent) component).isDropped(channelIndex));
-
-    /**
-     * Only active when using parallelStream(), and parallelStream() does not work when calculating fiber spans, since
-     * calculation order matters
-     */
-    private static final BinaryOperator<CalcResult> addResult = (fiberCalcResult, fiberCalcResult2) -> new CalcResult.Builder()
-            .accumulatedDistance(0)
-            .previousComponentFiber(false)
-            .numberOfFiberSpans(fiberCalcResult.numberOfFiberSpans + fiberCalcResult2.getNumberOfFiberSpans())
-            .build();
 }
