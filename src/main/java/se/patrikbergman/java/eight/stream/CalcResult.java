@@ -2,22 +2,34 @@ package se.patrikbergman.java.eight.stream;
 
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 public class CalcResult {
     final boolean previousComponentFiber;
     final double accumulatedDistance;
     final int numberOfFiberSpans;
+    final List<Integer> fiberSpansList;
 
+    public final List<Integer> getTotalResult() {
+        fiberSpansList.add(numberOfFiberSpans);
+        return fiberSpansList;
+    }
+    
     private CalcResult(Builder builder) {
         previousComponentFiber = builder.previousComponentFiber;
         accumulatedDistance = builder.accumulatedDistance;
         numberOfFiberSpans = builder.numberOfFiberSpans;
+        fiberSpansList = builder.fiberSpansList;
     }
 
     public static final class Builder {
         private boolean previousComponentFiber = false;
         private double accumulatedDistance = 0;
         private int numberOfFiberSpans = 0;
+        private List<Integer> fiberSpansList = new ArrayList<>();
+
 
         public double getAccumulatedDistance() {
             return accumulatedDistance;
@@ -27,12 +39,16 @@ public class CalcResult {
             return numberOfFiberSpans;
         }
 
+        public List<Integer> getFiberSpansList() {
+            return fiberSpansList;
+        }
+
         public void addFiberSpan() {
             this.numberOfFiberSpans++;
         }
 
-        public Builder() {
-        }
+
+        /** Builder setters **/
 
         public Builder previousComponentFiber(boolean previousComponentFiber) {
             this.previousComponentFiber = previousComponentFiber;
@@ -46,6 +62,11 @@ public class CalcResult {
 
         public Builder numberOfFiberSpans(int numberOfFiberSpans) {
             this.numberOfFiberSpans = numberOfFiberSpans;
+            return this;
+        }
+
+        public Builder fiberSpansList(List<Integer> fiberSpansList) {
+            this.fiberSpansList = fiberSpansList;
             return this;
         }
 

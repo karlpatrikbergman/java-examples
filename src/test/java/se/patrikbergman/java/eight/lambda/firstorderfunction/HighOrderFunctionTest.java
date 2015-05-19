@@ -46,14 +46,7 @@ public class HighOrderFunctionTest {
         System.out.println(g.apply(100));
     }
 
-
-
-    public class Converter implements ExtendedBiFunction<Double, Double, Double> {
-        @Override
-        public Double apply(Double aDouble, Double aDouble2) {
-            return aDouble * aDouble2;
-        }
-    }
+    /****************************************************************************/
 
     @FunctionalInterface
     public interface ExtendedBiFunction<T, U, R>
@@ -68,8 +61,16 @@ public class HighOrderFunctionTest {
         }
     }
 
+    public class Converter implements ExtendedBiFunction<Double, Double, Double> {
+        @Override
+        public Double apply(Double aDouble, Double aDouble2) {
+            return aDouble * aDouble2;
+        }
+    }
+
     @Test
     public void currying() {
+        //ExtendedBiFunction<T, U, R>
         Converter converter = new Converter();
         Function<Double, Double> f = converter.curry1(3.14);
         Double result = f.apply(20.0);

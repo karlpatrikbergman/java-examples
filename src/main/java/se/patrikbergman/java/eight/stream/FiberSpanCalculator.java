@@ -28,7 +28,7 @@ class FiberSpanCalculator {
     }
 
 
-    static final BiFunction<CalcResult, Component, CalcResult> calcFiberSpan = (fiberCalcResult, component) -> {
+    static final BiFunction<CalcResult, Component, CalcResult> calcFiberSpan = (resultIn, component) -> {
 
         final Consumer<CalcResult.Builder> fiberSpanFound = (result) -> {
             result.addFiberSpan();
@@ -36,23 +36,23 @@ class FiberSpanCalculator {
             result.accumulatedDistance(0);
         };
 
-        CalcResult.Builder resultBuilder = new CalcResult.Builder();
-        resultBuilder.numberOfFiberSpans(fiberCalcResult.numberOfFiberSpans);
+        CalcResult.Builder resultOutBuilder = new CalcResult.Builder();
+        resultOutBuilder.numberOfFiberSpans(resultIn.numberOfFiberSpans);
 
         if (component instanceof Fiber) {
             final Fiber fiber = ((Fiber) component);
-            if (!fiberCalcResult.previousComponentFiber) {
+            if (!resultIn.previousComponentFiber) {
                 if (fiber.getDistance() >= MIN_FIBER_LENGTH) {
-                    fiberSpanFound.accept(resultBuilder);
+                    fiberSpanFound.accept(resultOutBuilder);
                 } else {
-                    resultBuilder.accumulatedDistance(fiberCalcResult.accumulatedDistance + fiber.getDistance());
-                    if (resultBuilder.getAccumulatedDistance() >= MIN_FIBER_LENGTH) {
-                        fiberSpanFound.accept(resultBuilder);
+                    resultOutBuilder.accumulatedDistance(resultIn.accumulatedDistance + fiber.getDistance());
+                    if (resultOutBuilder.getAccumulatedDistance() >= MIN_FIBER_LENGTH) {
+                        fiberSpanFound.accept(resultOutBuilder);
                     }
                 }
             }
         }
-        return resultBuilder.build();
+        return resultOutBuilder.build();
     };
 
 
