@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class CalcResult {
+class CalcResult {
     final boolean previousComponentFiber;
     final double accumulatedDistance;
     final int numberOfFiberSpans;
@@ -16,7 +16,7 @@ public class CalcResult {
         fiberSpansList.add(numberOfFiberSpans);
         return fiberSpansList;
     }
-    
+
     private CalcResult(Builder builder) {
         previousComponentFiber = builder.previousComponentFiber;
         accumulatedDistance = builder.accumulatedDistance;
