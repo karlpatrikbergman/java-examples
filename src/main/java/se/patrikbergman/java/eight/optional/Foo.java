@@ -1,4 +1,4 @@
-package se.patrikbergman.java.eight.option;
+package se.patrikbergman.java.eight.optional;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,11 +2,13 @@ package se.patrikbergman.java.eight.stream;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-class CalcResult {
+class CalcResult implements Serializable{
+    private static final long serialVersionUID = 2406254587155111588L;
     final boolean previousComponentFiber;
     final double accumulatedDistance;
     final int numberOfFiberSpans;
