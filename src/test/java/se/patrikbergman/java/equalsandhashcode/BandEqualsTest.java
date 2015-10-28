@@ -1,24 +1,18 @@
-package se.patrikbergman.java.equals;
+package se.patrikbergman.java.equalsandhashcode;
 
 import org.junit.Test;
 
-import java.time.LocalDate;
-import java.time.Month;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static se.patrikbergman.java.equalsandhashcode.BandValueObjectFactory.createJudasPriestValueObject;
+import static se.patrikbergman.java.equalsandhashcode.BandValueObjectFactory.createSaxonValueObject;
 
 public class BandEqualsTest {
 
     private final Band judasPriestValueObjectX = createJudasPriestValueObject();
     private final Band judasPriestValueObjectY = createJudasPriestValueObject();
     private final Band judasPriestValueObjectZ = createJudasPriestValueObject();
-    private final Band saxonValueObject = new Band.Builder()
-            .name("Saxon")
-            .description("Saxon are an English heavy metal band formed in 1976, in South Yorkshire.")
-            .rockFactor(6)
-            .formed(LocalDate.of(1976, Month.AUGUST, 31))
-            .build();
+    private final Band saxonValueObject = createSaxonValueObject();
 
     /**
      *  For any non-null reference value x,x.equals(x) must return true.
@@ -81,13 +75,5 @@ public class BandEqualsTest {
         assertFalse(saxonValueObject.equals(null));
     }
 
-    private Band createJudasPriestValueObject() {
-        return new Band.Builder()
-                .name("Judas Priest")
-                .description("Judas Priest is a British heavy metal band formed in Birmingham, England, in 1970.")
-                .rockFactor(7)
-                .formed(LocalDate.of(1970, Month.APRIL, 16))
-                .totalIncome(10654234.23)
-                .build();
-    }
+
 }

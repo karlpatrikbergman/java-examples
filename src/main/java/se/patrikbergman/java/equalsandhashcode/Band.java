@@ -1,4 +1,4 @@
-package se.patrikbergman.java.equals;
+package se.patrikbergman.java.equalsandhashcode;
 
 import com.google.common.base.Preconditions;
 
@@ -30,6 +30,16 @@ class Band {
                 this.rockFactor == otherBand.rockFactor &&
                 this.formed.equals(otherBand.formed) &&
                 (Double.compare(this.totalIncome, otherBand.totalIncome) == 0);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + description.hashCode();
+        result = 31 * result + rockFactor;
+        result = 31 * result + formed.hashCode();
+        return result;
     }
 
     public static final class Builder {
