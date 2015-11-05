@@ -27,12 +27,4 @@ public class BigDecimalAppTest {
     public void toIntegerInHundredsOfMegaBits() {
         assertEquals(1023, bigDecimalApp.toIntegerInHundredsOfMegaBits(BigDecimal.valueOf(10.23)).intValueExact());
     }
-
-//        System.out.println(value);
-//        System.out.println(
-//            toIntegerInHundredsOfMegaBits(
-//                toBigDecimalWithTwoDecimals("10.23")
-//            ).intValueExact()
-//        );
-//    }
 }
