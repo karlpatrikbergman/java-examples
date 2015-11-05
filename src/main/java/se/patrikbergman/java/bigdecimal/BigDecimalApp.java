@@ -3,6 +3,7 @@ package se.patrikbergman.java.bigdecimal;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 
 /**
@@ -16,9 +17,9 @@ import java.math.RoundingMode;
 
 class BigDecimalApp {
 
-    BigDecimal toBigDecimalWithTwoDecimals(String stringValue) {
+    BigDecimal toBigDecimalWithTwoDecimals(String decimalString) {
         return BigDecimal
-                .valueOf(Double.valueOf(stringValue))
+                .valueOf(Double.valueOf(decimalString))
                 .setScale(2, RoundingMode.HALF_DOWN);
     }
 
@@ -26,10 +27,33 @@ class BigDecimalApp {
         return value.multiply(BigDecimal.valueOf(100)).toBigInteger();
     }
 
-    String toDisplayString(int speed) {
+    String toNumericStringWithTwoDecimals(int speed) {
         return BigDecimal.valueOf(speed)
                 .divide(BigDecimal.valueOf(100))
                 .toString();
+    }
+
+    Integer toInteger(String decimalString) {
+        return toIntegerInHundredsOfMegaBits(
+                toBigDecimalWithTwoDecimals(decimalString)
+        ).intValueExact();
+    }
+
+    /**
+     * This one includes both dot and comma
+     * final String regExp = "[0-9]+([,.][0-9]{1,2})?";
+     *
+     * @param stringValue
+     * @return
+     */
+    boolean isNumericValueWithTwoDecimals(String stringValue) {
+        final String regExp = "[0-9]+([.][0-9]{1,2})?";
+        return stringValue.matches(regExp);
+    }
+
+    String toStringWithTwoDecimals(long longValue) {
+        DecimalFormat df = new DecimalFormat("#.00");
+        return df.format(longValue);
     }
 
 }
