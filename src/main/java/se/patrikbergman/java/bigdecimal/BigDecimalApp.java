@@ -13,6 +13,9 @@ import java.text.DecimalFormat;
  * 100.00 - 15000.00    Label vid textfält i ENM gui
  * 135.22               Värde i ENM GUI
  * 13522                I MIB value --> 13 522 MB/s
+ *
+ *
+ * "10.23" --> BigDecimal --> int
  */
 
 class BigDecimalApp {

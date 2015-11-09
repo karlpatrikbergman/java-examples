@@ -30,7 +30,7 @@ public class BigDecimalAppTest {
     }
 
     @Test
-    public void foo() {
+    public void numericDecimalStringToInteger() {
         //given
         String textFieldValue = "10.23";
 
@@ -42,7 +42,7 @@ public class BigDecimalAppTest {
     }
 
     @Test
-    public void numericDecimalStringToInteger() {
+    public void numericDecimalStringToIntegerToDisplayString() {
         //given
         String textFieldValue = "10.2999";
 
@@ -75,8 +75,14 @@ public class BigDecimalAppTest {
     }
 
     @Test
-    public void toStringWithTwoDecimals() {
-        assertEquals("10.00", bigDecimalApp.toStringWithTwoDecimals(10));
+    public void foo() {
+        //given
+        String textFieldInput = "10.00";
+
+        //when
+        int submitValue = bigDecimalApp.toInteger(textFieldInput);
+        String displayValue = bigDecimalApp.toStringWithTwoDecimals(submitValue);
+        assertEquals("10.00", displayValue);
     }
 
 }
