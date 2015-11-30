@@ -1,5 +1,6 @@
 package se.patrikbergman.java.bigdecimal;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -74,7 +75,8 @@ public class BigDecimalAppTest {
         assertFalse(bigDecimalApp.isNumericValueWithTwoDecimals("non-numeric-string"));
     }
 
-    @Test
+
+    @Ignore
     public void foo() {
         //given
         String textFieldInput = "10.00";
