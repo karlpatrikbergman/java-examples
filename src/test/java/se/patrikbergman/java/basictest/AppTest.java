@@ -5,7 +5,7 @@ import org.junit.Test;
 public class AppTest {
 
     /**
-     * I thought assignment had to be done when declaring variable
+     * I thought assignment had to be done when declaring variable, if final
      */
     @Test
     public void testFinalModifier() {
