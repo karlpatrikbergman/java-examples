@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  */
 public class DoubleColonTest {
 
-	static void doSomeStaticWork() {
+	private static void doSomeStaticWork() {
 		System.out.println("Doing som static work");
 	}
 
@@ -55,6 +55,7 @@ public class DoubleColonTest {
 	/**
 	 * Can be replaced by Consumer!
 	 */
+	@SuppressWarnings("SameParameterValue")
 	interface Command<T> {
 		void execute(T argument);
 	}
@@ -62,6 +63,7 @@ public class DoubleColonTest {
 	@Test
 	public void customFunctionalInterfaceRepresentedByMethodReference() {
 		Command command = System.out::println;
+		//noinspection unchecked
 		command.execute("Executing command");
 	}
 
