@@ -52,7 +52,6 @@ public class Nicely {
 				i -> i.getBrand().getModel().equals("Fender"), 	//Predicate
 				i -> i.getBrand().getModel(),					//Function
 				model -> System.out.println(model));			//Consumer
-
 	}
 
 	public static void processInstruments(

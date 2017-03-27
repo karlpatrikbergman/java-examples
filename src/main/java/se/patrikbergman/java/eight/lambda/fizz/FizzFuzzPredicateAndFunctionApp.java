@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@SuppressWarnings("Convert2Lambda")
 public class FizzFuzzPredicateAndFunctionApp {
 
 	public static void main(String args[]) {

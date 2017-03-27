@@ -37,6 +37,7 @@ public class Simple {
 		}
 	}
 
+	@SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 	static class Member {
 		String name;
 		Optional<Instrument> instrument;
